@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\Request;
+use Illuminate\Http\Request;
 
 class PostRequest extends Request
 {

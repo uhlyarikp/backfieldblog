@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Posts;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -35,7 +35,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Posts $post)
+    public function show(Post $post)
     {
         if ($post->deleted_at) {
             return response()->json(['message' => 'Post have been deleted'], Response::HTTP_NOT_FOUND);
@@ -49,7 +49,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Posts::find($id);
+        $post = Post::find($id);
         $post->update($request->all());
         return response()->json($post);
     }
@@ -57,7 +57,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Posts $post)
+    public function destroy(Post $post)
     {
         $post->deleted_at = now();
         $post->save();

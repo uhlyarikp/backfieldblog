@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-use App\Models\Posts;
+use App\Models\Post;
 
 /**
  * Class PostService.
@@ -13,7 +13,7 @@ class PostService
      */
     public function index()
     {
-        return Posts::all();
+        return Post::all();
     }
 
     /**
@@ -21,23 +21,23 @@ class PostService
      */
     public function store(array $data)
     {
-        return Posts::create($data);
+        return Post::create($data);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id): Posts
+    public function show(string $id): Post
     {
-        return Posts::findOrFail($id);
+        return Post::findOrFail($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(array $data, string $id): Posts
+    public function update(array $data, string $id): Post
     {
-        $post = Posts::findOrFail($id);
+        $post = Post::findOrFail($id);
         return $post->update($data);
     }
 
@@ -46,7 +46,7 @@ class PostService
      */
     public function destroy(string $id)
     {
-        $post = Posts::find($id);
+        $post = Post::find($id);
         if ($post){
             $post->delete();
         }
